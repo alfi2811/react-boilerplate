@@ -1,13 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios';
+
+// REDUX
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './redux/reducers';
+import Main from './base/Main';
+
+// SET REDUX STORE
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+)
+
+// SET DEFAULT AXIOS
+axios.defaults.baseURL = process.env.REACT_APP_API_ENDPOINT;
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <Main />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
