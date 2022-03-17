@@ -4,6 +4,9 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
+// COMPONENT & OTHER
+import "assets/scss/index.scss"
+
 // REDUX
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
